@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:registration/screens/form_screen.dart';
 import 'package:registration/screens/menu_screen.dart';
+import 'package:registration/screens/view_user_screen.dart';
 
 class SuperAdmin extends StatelessWidget {
   String? firstName;
@@ -22,11 +23,15 @@ class SuperAdmin extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Admin'),
+        title: Text('$firstName'),
         actions: [
           IconButton(
             onPressed: () {
-              FormScreen();
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => FormScreen(),
+                ),
+              );
             },
             icon: Icon(
               Icons.logout_outlined,
@@ -57,6 +62,28 @@ class SuperAdmin extends StatelessWidget {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => FormScreen(),
+                ),
+              );
+            },
+          ),
+          SizedBox(
+            height: 50,
+          ),
+          OutlinedButton(
+            child: Text("View member"),
+            style: OutlinedButton.styleFrom(
+              backgroundColor: Colors.indigo,
+              primary: Colors.white,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(10),
+                ),
+              ),
+            ),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => ViewUser(),
                 ),
               );
             },
